@@ -1,5 +1,6 @@
 "use client";
 
+import SignUpForm from "@/app/authentication/_components/sign-up-form";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SignUpForm from "@/app/authentication/_components/sign-up-form";
 
 const AuthenticationPage = () => {
   return (
