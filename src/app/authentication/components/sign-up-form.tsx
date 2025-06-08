@@ -64,8 +64,12 @@ const SignUpForm = () => {
         onSuccess: () => {
           router.push("/dashboard");
         },
-        onError: () => {
-          toast.error("Erro ao criar conta. Tente novamente.");
+        onError: (ctx) => {
+          if (ctx.error.code === "USER_ALREADY_EXISTS") {
+            toast.error("Usuário já existe");
+
+            return;
+          }
         },
       },
     );
