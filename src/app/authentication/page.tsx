@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import LoginForm from "@/app/authentication/components/login-form";
-import SignUpForm from "@/app/authentication/components/sign-up-form";
+import LoginForm from "@/app/authentication/_components/login-form";
+import SignUpForm from "@/app/authentication/_components/sign-up-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { auth } from "@/lib/auth";
 

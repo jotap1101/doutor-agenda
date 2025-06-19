@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-import SignOutButton from "@/app/dashboard/components/sign-out-button";
+import SignOutButton from "@/app/(protected)/dashboard/_components/sign-out-button";
 import { db } from "@/db";
 import { usersToClinicsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
