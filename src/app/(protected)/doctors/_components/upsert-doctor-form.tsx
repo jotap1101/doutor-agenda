@@ -88,8 +88,16 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
   });
   const upsertDoctor = useAction(upsertDoctorAction, {
     onSuccess: () => {
-      toast.success("Médico adicionado com sucesso!");
-      form.reset();
+      toast.success(
+        doctor
+          ? "Médico atualizado com sucesso!"
+          : "Médico adicionado com sucesso!",
+      );
+
+      if (!doctor) {
+        form.reset();
+      }
+
       onSuccess?.();
     },
     onError: () => {
@@ -113,9 +121,13 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <DialogHeader>
-            <DialogTitle>Adicionar médico</DialogTitle>
+            <DialogTitle>
+              {doctor ? doctor.name : "Adicionar Médico"}
+            </DialogTitle>
             <DialogDescription>
-              Preencha os detalhes do médico que deseja adicionar à sua clínica.
+              {doctor
+                ? "Edite as informações do médico."
+                : "Preencha os dados do novo médico."}
             </DialogDescription>
           </DialogHeader>
           <FormField
@@ -383,7 +395,11 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
               <Button variant="outline">Cancelar</Button>
             </DialogClose>
             <Button type="submit" disabled={upsertDoctor.isPending}>
-              {upsertDoctor.isPending ? "Adicionando..." : "Adicionar"}
+              {upsertDoctor.isPending
+                ? "Salvando..."
+                : doctor
+                  ? "Salvar"
+                  : "Adicionar"}
             </Button>
           </DialogFooter>
         </form>
